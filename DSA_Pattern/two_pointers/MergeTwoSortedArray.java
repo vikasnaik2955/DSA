@@ -16,16 +16,29 @@ public class MergeTwoSortedArray {
 
         int i=0,j=0,n=0;
 
-        while (n<res.length){
-            if(i< odd.length && odd[i]<even[j]){
-                res[n] = odd[i];
-                i++;
-                n++;
-            }else if(j< even.length && odd[i]>even[j]){
-                res[n] = even[j];
-                j++;
-                n++;
+//        while (n<res.length){
+//            if(i< odd.length && odd[i]<even[j]){
+//                res[n] = odd[i];
+//                i++;
+//            }else if(j< even.length && odd[i]>even[j]){
+//                res[n] = even[j];
+//                j++;
+//            }
+//            n++;
+//        }
+
+        while (n < res.length && i< odd.length){
+            if (odd[i]<even[j]){
+                res[n++] = odd[i++];
+            }else {
+                res[n++] = even[j++];
             }
+        }
+        while (j<even.length){
+            res[n++]=even[j++];
+        }
+        while (i< odd.length){
+            res[n++]=odd[i++];
         }
         return res;
     }
